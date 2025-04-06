@@ -39,16 +39,22 @@
             line-height: 1.8;
             margin-bottom: 20px;
             color: #4e4b43;
-            transition: transform 0.6s ease;
+            transition: transform 0.6s ease-in-out;
             padding: 20px;
             background: #f7e7d7;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             border: 1px solid #d6ad70;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         .page.active {
             display: block;
+            transform: translateY(0); /* Make sure the page starts from its natural position */
         }
 
         .page h2 {
@@ -71,8 +77,9 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        .book:active .page.active {
-            animation: scrollPage 0.6s ease-in-out;
+        /* Add animation for the transition of pages */
+        .page:not(.active) {
+            transform: translateY(100%); /* Move non-active pages out of view */
         }
 
         @keyframes scrollPage {
@@ -80,9 +87,10 @@
                 transform: translateY(100%);
             }
             100% {
-                transform: translateY(0%);
+                transform: translateY(0);
             }
         }
+
     </style>
 </head>
 <body>
