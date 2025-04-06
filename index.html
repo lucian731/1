@@ -54,7 +54,7 @@
 
         .page.active {
             display: block;
-            transform: translateY(0); /* Make sure the page starts from its natural position */
+            animation: slideIn 0.6s ease-out forwards;
         }
 
         .page h2 {
@@ -77,18 +77,21 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        /* Add animation for the transition of pages */
-        .page:not(.active) {
-            transform: translateY(100%); /* Move non-active pages out of view */
-        }
-
-        @keyframes scrollPage {
+        /* Animation for the page sliding in */
+        @keyframes slideIn {
             0% {
-                transform: translateY(100%);
+                transform: translateY(100%); /* Start from bottom */
+                opacity: 0;
             }
             100% {
-                transform: translateY(0);
+                transform: translateY(0); /* End at natural position */
+                opacity: 1;
             }
+        }
+
+        /* Reset non-active pages position */
+        .page:not(.active) {
+            transform: translateY(100%); /* Move non-active pages out of view */
         }
 
     </style>
