@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Book</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://www.transparenttextures.com/patterns/broken-glass.png'); /* Subtle texture */
+        }
+
+        .book {
+            width: 350px;
+            height: 550px;
+            background-color: #fff8e1;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-grain.png'); /* Wood grain background */
+            background-size: cover;
+        }
+
+        .page {
+            display: none;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4e4b43;
+            transition: transform 0.6s ease;
+            padding: 20px;
+            background: #f7e7d7;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #d6ad70;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .page p {
+            text-align: justify;
+            color: #333;
+        }
+
+        .happy-anniversary {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            color: #e74c3c;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .book:active .page.active {
+            animation: scrollPage 0.6s ease-in-out;
+        }
+
+        @keyframes scrollPage {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="book" id="book">
+        <div class="page active">
+            <h2>Page 1</h2>
+            <p>She is the light that brightens every dark moment.</p>
+            <p>Her smile is like the sun that warms the coldest of hearts.</p>
+        </div>
+        <div class="page">
+            <h2>Page 2</h2>
+            <p>Her kindness knows no bounds, touching everyone she meets.</p>
+            <p>She is perfect in every way, just as she is.</p>
+        </div>
+        <div class="page">
+            <h2>Page 3</h2>
+            <p>With every step, she leaves an imprint of love and grace.</p>
+            <p>Her beauty is not just skin deep, it's the soul within.</p>
+        </div>
+        <div class="page">
+            <h2>Page 4</h2>
+            <p>Every moment with her feels like a blessing.</p>
+            <p>She completes the world in ways words cannot describe.</p>
+        </div>
+        <div class="page">
+            <h2>Page 5</h2>
+            <p>Her presence makes everything better.</p>
+            <p>She's the most beautiful and perfect person I know.</p>
+        </div>
+        <div class="page happy-anniversary">
+            <h2>Happy Anniversary!</h2>
+            <p>Thank you for being the amazing person you are.</p>
+        </div>
+    </div>
+
+    <script>
+        const book = document.getElementById('book');
+        let currentPage = 0;
+        const pages = document.querySelectorAll('.page');
+
+        book.addEventListener('click', () => {
+            pages[currentPage].classList.remove('active');
+            currentPage = (currentPage + 1) % pages.length;
+            pages[currentPage].classList.add('active');
+        });
+    </script>
+</body>
+  </html>
